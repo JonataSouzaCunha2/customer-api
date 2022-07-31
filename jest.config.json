@@ -1,0 +1,23 @@
+{
+  "clearMocks": true,
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "collectCoverageFrom": ["src/**/*.ts"],
+  "coverageReporters": [
+    [
+      "text",
+      {
+        "skipFull": true
+      }
+    ],
+    "text-summary",
+    "lcov"
+  ],
+  "coveragePathIgnorePatterns": ["routes.ts"],
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testTimeout": 60000,
+  "testPathIgnorePatterns": ["node_modules", "dist"],
+  "setupFiles": ["./tests/jest-setup-file.ts"],
+  "silent": false
+}

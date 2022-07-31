@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  application:
+    volumes:
+      - .:/application
+    ports:
+      - 3000:3000
+      - 9229:9229
+      - 9228:9228
+  aws:
+    ports:
+      - 4566:4566

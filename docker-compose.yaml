@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  aws:
+    image: localstack/localstack
+    environment:
+      DEFAULT_REGION: us-east-1
+      SERVICES: dynamodb
+  application:
+    build: .
+    command: sh -c "npm install && npm run configure:dynamo && npm run start:local"
+    working_dir: /application
+    depends_on:
+      - aws
+    environment:
+      DYNAMODB_TABLE: customers
+      DYNAMODB_ENDPOINT: http://aws:4566
+      AWS_ACCESS_KEY_ID: "dev"
+      AWS_REGION: "us-east-1"
+      AWS_SECRET_ACCESS_KEY: "dev" # pragma: allowlist secret
